@@ -25,3 +25,11 @@ def test_max_mag_zeros():
     test_output = 0
 
     assert max_mag(test_input_df, test_input_colname) == test_output
+    
+def test_max_mag_strings():
+    # Test for TypeError when passing a string
+    from lcanalyzer.models import max_mag
+
+    test_input_colname = "b"
+    with pytest.raises(TypeError):
+        error_expected = max_mag('string', test_input_colname)
