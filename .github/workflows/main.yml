@@ -3,6 +3,7 @@ name: CI
 # We can specify which Github events will trigger a CI build
 on: push
 
+jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
