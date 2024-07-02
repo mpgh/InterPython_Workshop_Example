@@ -9,14 +9,9 @@ jobs:
   build:
 
     # we can also specify the OS to run tests on
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        python-version: ["3.10", "3.11"]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     # a job is a seq of steps
-
     steps:
 
     # Next we need to checkout out repository, and set up Python
@@ -24,10 +19,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Set up Python ${{matrix.python-version}}
+    - name: Set up Python 3.11
       uses: actions/setup-python@v3
       with:
-        python-version: ${{matrix.python-version}}
+        python-version: "3.11"
 
     - name: Install Python dependencies
       run: |
