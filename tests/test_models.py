@@ -129,3 +129,15 @@ def test_mean_mag(test_df, test_colname, expected):
     """Test mean function works for array of zeroes and positive integers."""
     from lcanalyzer.models import mean_mag
     assert mean_mag(test_df, test_colname) == expected
+
+
+def calc_stats(lc, bands, mag_col):
+    # Calculate max, mean and min values for all bands of a light curve
+    stats = {}
+    for b in bands:
+        stat = {}
+        stat["max"] = models.max_mag(lc[b], mag_col)
+        stat["mean"] = models.max_mag(lc[b], mag_col)
+        stat["min"] = models.mean_mag(lc[b], mag_col)
+        stats[b] = stat
+    return pd.DataFrame.from_records(stats)
